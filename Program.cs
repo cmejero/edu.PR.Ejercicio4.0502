@@ -14,50 +14,91 @@ namespace edu.PR.Ejercicio4._0502
 
             DateTime fechaUsuario = Convert.ToDateTime(fecha);
             Console.WriteLine(fechaUsuario.ToString());
-
+            
             DateTime fechaHoy = DateTime.Now;
-
+            TimeSpan restaFechas = fechaHoy - fechaUsuario;
+            
             int calculoAnio = fechaHoy.Year - fechaUsuario.Year;
-            Console.WriteLine(calculoAnio.ToString());
+            
 
             int calculoMes = fechaHoy.Month - fechaUsuario.Month;
-            Console.WriteLine(calculoMes.ToString());
+          
 
             int calculoDia = fechaHoy.Day - fechaUsuario.Day;
-            Console.WriteLine(calculoDia.ToString());
+          
+
+            
+    
 
             if (calculoAnio > 0)
             {
-               
 
-                if(calculoMes < 0)
+
+                if (calculoMes > 0)
                 {
-                    calculoAnio = calculoAnio - 1;
-                    Console.WriteLine("La edad actual es de:  " + calculoAnio);
+                    Console.WriteLine("años: " + calculoAnio);
+
                 }
-                else
+                else if (calculoMes < 0)
                 {
-                    if(calculoDia < 0)
-                    {
-                        calculoAnio = calculoAnio - 1;
-                        Console.WriteLine("La edad actual es de:  " + calculoAnio);
-                    }
-                
-                    else
-                    {
-                        if (calculoDia == 0 ) {
-                            
-                            Console.WriteLine("Es tu cumpleaños, cumples: " + calculoAnio);
-                        }
-                       
-                    }
-       
+
+                    int restaAnio = calculoAnio - 1;
+                    Console.WriteLine("Años: " + restaAnio);
+
                 }
+                else if (calculoMes == 0)
+                {
+                    if (calculoDia > 0)
+                    {
+                        Console.WriteLine("Años: " + calculoAnio);
+                    }
+                    else if (calculoDia < 0)
+                    {
+                        int restaAnio = calculoAnio - 1;
+                        Console.WriteLine("Años: " + restaAnio);
+
+                    }
+                    else if (calculoDia == 0)
+                    {
+                        Console.WriteLine("Es tu cumpleaños, cumples: " + calculoAnio);
+
+                    }
+
+                }
+
+
             }
-            else
-            {
-                Console.WriteLine("La fecha indicada es más alta que la fecha actual");
-            }
+
+            
+            double resultadoDias = restaFechas.TotalDays;
+            Console.WriteLine("calculo dias al completo: " + resultadoDias);
+            int parteEnteraDias = (int)resultadoDias;
+            Console.WriteLine("Parte entera de los dias: " + parteEnteraDias) ;
+            double parteDecimalDias = resultadoDias - parteEnteraDias;
+            Console.WriteLine("Parte decimal de los dias:" + parteDecimalDias) ;
+
+            double resultadoMes = parteEnteraDias / 31.0;
+            Console.WriteLine("calculo de meses al completo: " + resultadoMes) ;
+            int parteEnteraMeses = (int)resultadoMes;
+            Console.WriteLine("Parte entera de los meses: " + parteEnteraMeses) ;
+           
+
+            double resultadoAnio = parteEnteraMeses / 12.0;
+            Console.WriteLine("calculo total de los años: " + resultadoAnio) ;
+            int parteEnteraAnios = (int)resultadoAnio;
+            Console.WriteLine("Parte entera de los años: " + parteEnteraAnios) ;
+            
+
+
+
+            Console.WriteLine("#############################");
+            Console.WriteLine("AÑOS: " + parteEnteraAnios);
+            double calculoMesesReal = parteEnteraMeses % 12.0;
+            Console.WriteLine("MESES: " + calculoMesesReal);
+            double calculoDiasReal = parteEnteraDias % 30.0;
+            Console.WriteLine("Dias: " + calculoDiasReal);
+            
+
 
 
         }
